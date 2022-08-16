@@ -4,7 +4,7 @@ from pathlib import Path
 
 from docxtpl import DocxTemplate # pip install docxtpl
 
-
+## Criando variáveis para path absoluto do repositório
 base_dir = Path(__file__).parent
 word_template_path = base_dir / "vert_contato.docx"
 
