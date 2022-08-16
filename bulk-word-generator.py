@@ -37,4 +37,7 @@ for record in df.to_dict(orient="records"):
 	doc.render(record)
 	output_path = output_dir / f"{record['NOME_DESTINATARIO']} - vert_contato.docx"
 	doc.save(output_path)
+
+## Conversão de .docx para .pdf
+# Covert .docx into .pdf
 	convert( output_path, f"{output_dir}/{record['NOME_DESTINATARIO']}.pdf")
