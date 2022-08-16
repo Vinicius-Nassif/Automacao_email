@@ -1,0 +1,4 @@
+*.docx
+output/*.docx
+output/*.pdf
+modelos recebidos
