@@ -49,8 +49,6 @@ class BulkWordGenerator():
 			convert(output_path, f"{self.output_dir}/{record['NOME_DESTINATARIO']}.pdf")
 			print('.docx convertido para .pdf')
 
-vert_to_excel = BulkWordGenerator(documento_inicial='vert_contato.docx', planilha='contacts-list.xlsx', diretorio='OUTPUT')
-
 if __name__=='__main__':
 	vert_to_excel = BulkWordGenerator(documento_inicial='vert_contato.docx', planilha='contacts-list.xlsx', diretorio='OUTPUT')
 	# Execução sequencial de todas as fases da classe BulkWordGenerator:
