@@ -1,43 +1,69 @@
 from pathlib import Path
-
 from docx2pdf import convert     #pip install docx2pdf
-import pandas as pd 	#pip install pandas openpyxl
+import pandas as pd 	#pip install pandas 
 from docxtpl import DocxTemplate 	#pip install docxtpl
 
-base_dir = Path(__file__).parent
-word_template_path = base_dir / "vert_contato.docx"
-excel_path = base_dir / "contacts-list.xlsx"
-output_dir = base_dir / "OUTPUT"
+class BulkWordGenerator():
 
+	def __init__(self, documento_inicial, planilha, diretorio):
+		# Alocando argumentos
+		self.documento_inicial = documento_inicial
+		self.planilha = planilha 
+		self.diretorio = diretorio
 
-## Criar pasta output para os documentos word
-# Create output folder for the word documents
-output_dir.mkdir(exist_ok=True)
+		# Inicializando objetos
+		self.word_template_path = None
+		self.excel_path = None
+		self.output_dir = None
+		self.base_dir = None
+		self.df = None
 
+	def identicacao(self):
+		self.base_dir = Path(__file__).parent
+		self.word_template_path = self.base_dir / self.documento_inicial
+		self.excel_path = self.base_dir / self.planilha
+		self.output_dir = self.base_dir / self.diretorio
 
-## Converter planilha do Excel em Pandas Dataframe
-# Convert Excel sheet into pandas dataframe
-df = pd.read_excel(excel_path, sheet_name="Sheet1")
+	def manipulacao(self):
+		# Criar pasta output para os documentos word
+		self.output_dir.mkdir(exist_ok=True)
+		# Converter planilha do Excel em Pandas Dataframe
+		self.df = pd.read_excel(self.excel_path, sheet_name="Sheet1")
 
+	def data(self):
+		# Exibir somente data YYYY-MM-DD (sem o horário)
+		self.df["DATA_ENTREGA"] = pd.to_datetime(self.df["DATA_ENTREGA"]).dt.date
+		# Alterando o formato da data de YYYY-MM-DD para DD-MM-YYYY
+		self.df["DATA_ENTREGA"] = pd.to_datetime(self.df["DATA_ENTREGA"]).dt.strftime('%d/%m/%Y')
 
-##  Exibir somente data YYYY-MM-DD (sem o horário)
-# Keep only date part YYYY-MM-DD (not the time)
-df["DATA_ENTREGA"] = pd.to_datetime(df["DATA_ENTREGA"]).dt.date
+	def interacao(self):
+		# Interação entre o Excel e a produção dos documentos Word
+		for record in self.df.to_dict(orient="records"):
+			doc = DocxTemplate(self.word_template_path)
+			doc.render(record)
+			output_path = self.output_dir / f"{record['NOME_DESTINATARIO']} - vert_contato.docx"
+			doc.save(output_path)
+			print('.docx armazenado com sucesso!')
 
+			# Converter .docx em .pdf
+			convert(output_path, f"{self.output_dir}/{record['NOME_DESTINATARIO']}.pdf")
+			print('.docx convertido para .pdf')
 
-## Alterando o formato da data de YYYY-MM-DD para DD-MM-YYYY
-# Changing format date YYYY-MM-DD to DD-MM-YYYY
-df["DATA_ENTREGA"] = pd.to_datetime(df["DATA_ENTREGA"]).dt.strftime('%d/%m/%Y')
+vert_to_excel = BulkWordGenerator(documento_inicial='vert_contato.docx', planilha='contacts-list.xlsx', diretorio='OUTPUT')
 
-
-## Interação entre o Excel e a produção dos documentos Word
-# Interate over each row in df and render word document 
-for record in df.to_dict(orient="records"):
-	doc = DocxTemplate(word_template_path)
-	doc.render(record)
-	output_path = output_dir / f"{record['NOME_DESTINATARIO']} - vert_contato.docx"
-	doc.save(output_path)
-
-## Conversão de .docx para .pdf
-# Covert .docx into .pdf
-	convert( output_path, f"{output_dir}/{record['NOME_DESTINATARIO']}.pdf")
+if __name__=='__main__':
+	vert_to_excel = BulkWordGenerator(documento_inicial='vert_contato.docx', planilha='contacts-list.xlsx', diretorio='OUTPUT')
+	# Execução sequencial de todas as fases da classe BulkWordGenerator:
+	# 1. Identifica o diretório base do .docx e .xlsx, a template e o output 
+	vert_to_excel.identicacao()
+	print('Identificação executada com sucesso')
+	# 2. Cria a pasta output e converte a planilha do Excel em dataframe
+	vert_to_excel.manipulacao()
+	print('Manipulação executada com sucesso')
+	# 3. Executa a formatação da data
+	vert_to_excel.data()
+	print('Datação realizada com sucesso')
+	# 4. Interação entre Excel e os documentos .docx. Depois converte em .pdf
+	vert_to_excel.interacao()
+	print('Interação realizada com sucesso')
+	print('BulkWordGenerator concluído!')
