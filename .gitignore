@@ -1,4 +1,6 @@
 *.docx
+*.xlsx
+*.xls
 output/*.docx
 output/*.pdf
 modelos recebidos
