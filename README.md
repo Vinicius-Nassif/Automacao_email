@@ -40,7 +40,7 @@ Esse é o módulo responsável por inteirar no template e produzir somente um do
 
 O projeto teve início com a importação das bibliotecas e funções utilizadas na elaboração do código em *Python*:
 
-![Imagem 1](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\1.png)
+![1](https://user-images.githubusercontent.com/111388699/200914888-7a447366-2db1-4902-9801-34d6097212ac.png)
 
 Primeiramente, ocorreu a importação da *pathlib*, que é uma biblioteca para minipular caminhos de sistemas de arquivos de maneira independente, seja qual for o sistema operacional.
 
@@ -54,7 +54,7 @@ A biblioteca *docxtpl* foi utilizada para preencher os dados desejados dentro do
 
 O código teve início com a denominação de uma classe chamada *SingleWordGenerator()* e sua primeira função foi a __init__():, como podemos ver a seguir:
 
-![Imagem 2](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\2.png)
+![2](https://user-images.githubusercontent.com/111388699/200914922-2de94040-c64d-49ed-b53f-103121e90de5.png)
 
 O método *“__init__():*” é um método especial para que o Python execute automaticamente sempre que criarmos uma nova instância baseada na classe *SingleWordGenerator():* e foi definido para ter três argumentos: o *self, doc_inicial* e *documento_gerado*.
 
@@ -66,7 +66,7 @@ Logo abaixo, iniciam-se os objetos *self.word_template_path*, *self.base_dir*, *
 
 Essa função estabelece diretórios dos arquivos e da template. 
 
-![Imagem 3](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\3.png)
+![3](https://user-images.githubusercontent.com/111388699/200914954-126620b0-ddc9-4abe-b4d4-cf5f0342114b.png)
 
 A variável *self.base_dir* recebe o método *Path()* para estabelecer o diretório como o mesmo do arquivo *self.doc_inicial*.
 
@@ -74,7 +74,7 @@ A variável *self.word_template_path* recebeu o *self.base_dir / self.doc_inicia
 
 Na sequência, foram fornecidas as informações pela planilha Excel que preecheriam as lacunas identificadas no template à variável *self.context*. Vejamos o template:
 
-![Imagem 4](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\4.png)
+![4](https://user-images.githubusercontent.com/111388699/200914994-a45974ef-0e8c-408e-9d15-6a4bc7f19195.png)
 
 
 
@@ -82,7 +82,7 @@ Na sequência, foram fornecidas as informações pela planilha Excel que preeche
 
 Essa função é responsável por renderizar as informações e salvar o documento com as informações inseridas no template.
 
-![Imagem 5](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\5.png)
+![5](https://user-images.githubusercontent.com/111388699/200915026-1eff36c5-863b-4700-9477-f1f1444028dd.png)
 
 A variável *self.doc* recebeu o método *render()* com o parâmetro *self.context* para inserir as informações informadas no novo documento, que receberá o seu valor na variável *self.documento_gerado* e será salvo no mesmo diretório. 
 
@@ -92,11 +92,11 @@ A variável *self.doc* recebeu o método *render()* com o parâmetro *self.conte
 
 Podemos usar um bloco **if __name__ ==** "**__main__**" para permitir ou evitar que partes do código sejam executadas ao importar os módulos. Quando o interpretador do *Python* lê um arquivo, a variável **__name__** é definida como **__main__** se o módulo que está sendo executado, ou como o nome do módulo se ele for importado.
 
-![Imagem 6](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\6.png)
+![6](https://user-images.githubusercontent.com/111388699/200915072-8645a76b-4701-4432-b0a2-12f97668f444.png)
 
 Assim, tem o objetivo de orquestrar a execução sequencial de todas as fases do single-word-generator, como um índice representativo e intuitivo, com o chamado de todos os métodos já explicados e trazendo também mensagens de êxito nas conclusões de cada etapa pelo método *print()*. Fica assim o resultado após o preenchimento da template:
 
-![Imagem 7](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\7.png)
+![7](https://user-images.githubusercontent.com/111388699/200915106-856defce-ec1a-48a0-a1d4-4ea663fde828.png)
 
 
 
@@ -106,7 +106,7 @@ Esse é o módulo responsável por inteirar no template e produzir uma série do
 
 ### 4.1 Bibliotecas 
 
-![Imagem 8](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\8.png)
+![8](https://user-images.githubusercontent.com/111388699/200915165-7025ea7b-2c3e-416c-933f-bb6a7066c625.png)
 
 Primeiramente, ocorreu a importação da *pathlib*, que é uma biblioteca para minipular caminhos de sistemas de arquivos de maneira independente, seja qual for o sistema operacional.
 
@@ -122,7 +122,7 @@ A biblioteca *docxtpl* foi utilizada para preencher os dados desejados dentro do
 
 O código teve início com a denominação de uma classe chamada *BulkWordGenerator()* e sua primeira função foi a __init__():, como podemos ver a seguir:
 
-![Imagem 9](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\9.png)
+![9](https://user-images.githubusercontent.com/111388699/200915233-580a2e09-a1a6-43df-becb-4081b9160900.png)
 
 O método *“__init__():*” é um método especial para que o Python execute automaticamente sempre que criarmos uma nova instância baseada na classe *BulkWordGenerator():* e foi definido para ter quatro argumentos: o self, *documento_inicial* e *planilha* e *diretorio*.
 
@@ -134,7 +134,7 @@ Logo abaixo, iniciam-se os objetos *self.word_template_path*, *self.excel_path*,
 
 Essa função estabelece diretórios dos arquivos, da template e da planilha Excel.
 
-![Imagem 10](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\10.png)
+![10](https://user-images.githubusercontent.com/111388699/200915279-7f97cd6a-981f-4a2a-b8d6-5bea88b538f7.png)
 
 A variável self.base_dir recebe o método *Path()* para estabelecer o diretório como o mesmo do arquivo *self.doc_inicial*.
 
@@ -148,19 +148,21 @@ Por último, o *self.output_dir* recebeu a variável *self.base_dir* e o *self.d
 
 É o método responsável em criar a pasta de destino dos arquivos e converter a planilha Excel em *dataframe*.
 
-![Imagem 11](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\11.png)
+![11](https://user-images.githubusercontent.com/111388699/200915331-03f13d9f-d615-48a1-a58f-010a65be1b80.png)
 
 A variável *self.output_dir* recebeu o método *mkdir*() para criar o diretório de destino. A variável *self.df* recebeu o *pandas* como pd com o método *read_excel()*, especificando o argumento com a variável self.*excel_path* e o nome da planilha como "Sheet1". 
 
 Em caráter ilustrativo, vejamos parte da planilha que contém as informações:
 
-![Imagem Plan](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\plan.png)
+![plan](https://user-images.githubusercontent.com/111388699/200915420-e42e2812-bd15-4067-8aeb-be0b9d0abccd.png)
+
+
 
 #### def data(self):
 
 Essa função ficou responsável por exibir a data nos documentos renderizados.
 
-![Imagem 12](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\12.png)
+![12](https://user-images.githubusercontent.com/111388699/200915477-600dff97-1e00-44db-b16a-fa5d39bac509.png)
 
 Foi estabelecido para a variável *self.df* que exiba no campo do template "DATA_ENTREGA" receba a data no formato brasileiro (DD/MM/YY). 
 
@@ -170,7 +172,7 @@ Foi estabelecido para a variável *self.df* que exiba no campo do template "DATA
 
 Essa função ficou responsável por interar entre o Excel e a produção dos .docx.
 
-![Imagem 13](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\13.png)
+![13](https://user-images.githubusercontent.com/111388699/200915524-a8a94471-895e-424b-be5f-c46e671aa0ed.png)
 
 Se inicia com um laço de repetição for para que em *record* em *self.df* receba o *dataframe*. Foi identificado o template na variável doc recebendo o método DocxTemplate() e sua renderização na linha 43. 
 
@@ -178,7 +180,7 @@ A variável *output_path* recebeu o *self.output_dir* com o formato de nome do a
 
 Na linha 49 ocorre a conversão dos arquivos do output_path com o formato do NOME_DESTINARIO.pdf. Na sequência exibe a mensagem de conclusão.
 
-![Imagem 15](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\15.png)
+![15](https://user-images.githubusercontent.com/111388699/200915636-09ef28af-1353-4eb2-934d-3ee8a560fb41.png)
 
 
 
@@ -186,11 +188,10 @@ Na linha 49 ocorre a conversão dos arquivos do output_path com o formato do NOM
 
 Tem o objetivo de orquestrar a execução sequencial de todas as fases do single-word-generator, como um índice representativo e intuitivo, com o chamado de todos os métodos já explicados e trazendo também mensagens de êxito nas conclusões de cada etapa pelo método *print()*. 
 
-![Imagem 14](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\14.png)
+![14](https://user-images.githubusercontent.com/111388699/200915688-ee4f2a91-aa9c-443d-b8ef-cbbceba42c16.png)
 
 A pasta output após a conclusão do procedimento de automação  passou a conter arquivos .docx e .pdf de cada cliente. 
-
-![Imagem 16](C:\Users\ccece\Documents\Projetos AD\Artigos\Automacao_email\16.png)
+![16](https://user-images.githubusercontent.com/111388699/200915732-c3d5c030-9ce6-4636-baf3-73c66d7a3f1b.png)
 
 
 
