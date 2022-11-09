@@ -1,6 +1,6 @@
 from pathlib import Path
-from docx2pdf import convert     #pip install docx2pdf
-import pandas as pd 	#pip install pandas 
+from docx2pdf import convert     	#pip install docx2pdf
+import pandas as pd 			 	#pip install pandas 
 from docxtpl import DocxTemplate 	#pip install docxtpl
 
 class BulkWordGenerator():
@@ -50,7 +50,9 @@ class BulkWordGenerator():
 			print('.docx convertido para .pdf')
 
 if __name__=='__main__':
-	vert_to_excel = BulkWordGenerator(documento_inicial='vert_contato.docx', planilha='contacts-list.xlsx', diretorio='OUTPUT')
+	vert_to_excel = BulkWordGenerator(documento_inicial='vert_contato.docx', 
+									planilha='contacts-list.xlsx', 
+									diretorio='OUTPUT')
 	# Execução sequencial de todas as fases da classe BulkWordGenerator:
 	# 1. Identifica o diretório base do .docx e .xlsx, a template e o output 
 	vert_to_excel.identicacao()

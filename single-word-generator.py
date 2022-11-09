@@ -1,4 +1,3 @@
-import datetime
 from pathlib import Path
 from docxtpl import DocxTemplate # pip install docxtpl
 
@@ -22,22 +21,25 @@ class SingleWordGenerator():
 		self.word_template_path = self.base_dir / self.doc_inicial
 		self.doc = DocxTemplate(self.word_template_path)
 		# Fornecendo informações que preencherão as lacunas identificadas na template
-		self.context = {"NOME_DESTINATARIO": "André Almeida fontes",
-						"ENDEREÇO": "Rua Alameda dos santos, número 5",
-						"CEP": "65232-232",
-						"DATA_ENTREGA": "23/05/2021",
-						"NUMERO_OC": "1200323134",
-						"PRODUTO": "TECLADO GAMER XL",
-						}
+		self.context = {
+					"NOME_DESTINATARIO": "André Almeida fontes",
+					"ENDEREÇO": "Rua Alameda dos santos, número 5",
+					"CEP": "65232-232",
+					"DATA_ENTREGA": "23/05/2021",
+					"NUMERO_OC": "1200323134",
+					"PRODUTO": "TECLADO GAMER XL",
+					   }
 
 	def render_save(self):
 		# Renderizando as informações no template
 		self.doc.render(self.context)
-		# Salvando o documento com as informações inseridas na template
+		# Salvando o documento com as informações inseridas no template
 		self.doc.save(self.base_dir / self.documento_gerado)
 
 if __name__=='__main__':
-	vert_documentacao = SingleWordGenerator(doc_inicial='vert_contato.docx', documento_gerado='vert_contato_generated.docx')
+	vert_documentacao = SingleWordGenerator(
+				doc_inicial='vert_contato.docx', 
+				documento_gerado='vert_contato_generated.docx')
 	# Execução sequencial de todas as fases da classe SingleWordGenerator:
 	# 1. Identicação do documento inicial, do diretório e lacunas a serem preenchidas.
 	vert_documentacao.identificacao()
